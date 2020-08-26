@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("course")
+@ConfigurationProperties("course") /**it will read data from properties file**/
 public class CourseConfiguration {
 
     private String name;
