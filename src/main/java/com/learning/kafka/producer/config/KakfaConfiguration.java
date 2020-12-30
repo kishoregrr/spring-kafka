@@ -28,6 +28,11 @@ public class KakfaConfiguration {
         return new DefaultKafkaProducerFactory<>(config);
     }
 
+    @Bean
+    public void consumerFactory(){}
+
+
+
 
     @Bean
     public KafkaTemplate<String, User> kafkaTemplate() {

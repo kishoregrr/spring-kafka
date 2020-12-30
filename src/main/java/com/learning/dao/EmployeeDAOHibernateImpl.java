@@ -4,6 +4,7 @@ import com.learning.entity.Employee;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,17 +12,13 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
+@Qualifier("hibernateBean")
 public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
     // define field for entitymanager
+    @Autowired
     private EntityManager entityManager;
 
-    // set up constructor injection
-    @Autowired
-    public EmployeeDAOHibernateImpl(EntityManager theEntityManager) {
-
-        entityManager = theEntityManager;
-    }
 
     @Override
     @Transactional

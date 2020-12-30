@@ -6,7 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 
 @SpringBootApplication
@@ -19,7 +22,19 @@ public class Application {
 		return application.sources(Application.class);
 	}*/
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    @Bean
+    public RestTemplate getRestTemplate() {
+
+        /*HttpComponentsClientHttpRequestFactory httpComponentsClientHttpRequestFactory
+                = new HttpComponentsClientHttpRequestFactory();
+        httpComponentsClientHttpRequestFactory.setConnectTimeout(3000);
+        return new RestTemplate(httpComponentsClientHttpRequestFactory);*/
+
+        return new RestTemplate();
+    }
+
+    public static void main(String[] args) {
+
+        SpringApplication.run(Application.class, args);
+    }
 }

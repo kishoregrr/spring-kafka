@@ -13,12 +13,8 @@ import java.util.List;
 @RequestMapping("v2")
 public class EmployeeControllerV2 {
 
-    private EmployeeService employeeService;
-
     @Autowired
-    public EmployeeControllerV2(EmployeeService theEmployeeService) {
-        employeeService = theEmployeeService;
-    }
+    private EmployeeService employeeService;
 
     // expose "/employees" and return list of employees
     @GetMapping("/employees")

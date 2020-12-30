@@ -2,6 +2,7 @@ package com.learning.dao;
 
 import com.learning.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,21 +10,17 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
+@Qualifier("jpaBean")
 public class EmployeeDAOJpaImpl implements EmployeeDAO  {
 
-    private EntityManager entityManager;
-
     @Autowired
-    public EmployeeDAOJpaImpl(EntityManager theEntityManager) {
-        entityManager = theEntityManager;
-    }
+    private EntityManager entityManager;
 
     @Override
     public List<Employee> findAll() {
 
         // create a query
-        Query theQuery =
-                entityManager.createQuery("from Employee");
+        Query theQuery =  entityManager.createQuery("from Employee");
 
         // execute query and get result list
         List<Employee> employees = theQuery.getResultList();
